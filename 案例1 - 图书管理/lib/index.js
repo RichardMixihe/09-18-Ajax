@@ -33,16 +33,23 @@ document.querySelector('#add-btn'). addEventListener('click',function () {
 document.querySelector('#addBtn'). addEventListener('click',function () {
     // 最终目标：把输入框的值，提交给接口
     const bookname = document.querySelector('#addForm [name = bookname]').value;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
-    const author = document.querySelector('[#addForm name = author]').value;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
-    const publisher = document.querySelector('[#addForm name = publisher]').value;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
+    const author = document.querySelector('#addForm [name = author]').value;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
+    const publisher = document.querySelector('#addForm [name = publisher]').value;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
     console.log(bookname, author, publisher);
+    myModal.hide();
     axios({
         method:'POST',
         url:'http://www.itcbc.com:3006/api/addbook',
         data:{
-            
+            bookname:bookname,
+            author:author,
+            publisher:publisher,
+            appkey:'richard1'
         }
-    }).then(()=>{
+    }).then(({data:res})=>{
+        console.log(res);
 
     })  
+    myModal.hide();
 })//绑定事件;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
+fn();
