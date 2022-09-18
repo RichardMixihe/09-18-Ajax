@@ -9,6 +9,15 @@
 </head>
 <body>
     <script>
+        // axios({请求的配置}).then((形参)=>{})
+        axios({
+
+            //键值对
+            method : 'GET',//制定请求的类型
+            url:'http://www.itcbc.com:3006/api/getbooks'
+        }).then(({data:res})=>{
+            console.log(res);
+        })
         
     </script>
 </body>
