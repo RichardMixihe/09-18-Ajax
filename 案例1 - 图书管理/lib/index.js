@@ -44,7 +44,7 @@ document.querySelector('#addBtn'). addEventListener('click',function () {
             bookname:bookname,
             author:author,
             publisher:publisher,
-            appkey:'richard1'
+            appkey:'Richard1'
         }
     }).then(({data:res})=>{
         console.log(res);
