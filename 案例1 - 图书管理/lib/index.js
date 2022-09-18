@@ -1,4 +1,4 @@
-let fn = ()=>{
+ function fn(){
     axios({
         method:'GET',
         url:'http://www.itcbc.com:3006/api/getbooks',
@@ -48,8 +48,9 @@ document.querySelector('#addBtn'). addEventListener('click',function () {
         }
     }).then(({data:res})=>{
         console.log(res);
+        myModal.hide();
+        fn();
 
     })  
-    myModal.hide();
+
 })//绑定事件;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
-fn();
