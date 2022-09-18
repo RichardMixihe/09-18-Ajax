@@ -14,7 +14,7 @@
           <td>${item.author}</td>
           <td>${item.publisher}</td>
           <td>
-            <button type="button" class="btn btn-link btn-sm btn-delete">删除</button>
+            <button data-id=${item.id} type="button" class="btn btn-link btn-sm btn-delete">删除</button>
             <button type="button" class="btn btn-link btn-sm btn-update">编辑</button>
           </td>
         </tr>`
@@ -50,7 +50,30 @@ document.querySelector('#addBtn'). addEventListener('click',function () {
         console.log(res);
         myModal.hide();
         fn();
-
     })  
 
 })//绑定事件;//返回文档中匹配指定 CSS选择器的一个元素。!!注意仅仅返回匹配指定选择器的第一个元素
+
+
+// -------------------3.删除图书-----------------------
+// 找到删除按钮注册单击事件.必须使用事件委托的方案
+document.querySelector('tbody'). addEventListener('click',function (e) {
+    // 判断一下点击是否是删除
+    if (e.target.classList.contains('btn-delete')) {
+        const id = e.target.dataset.id;
+        console.log("点击了删除");
+        axios({
+            method:'DELETE',
+            url:'http://www.itcbc.com:3006/api/delbook',
+            params:{
+                id:id,
+                appkey:'Richard1'
+            }
+        }).then(({data:res})=>{
+            console.log(res);
+            fn()
+        })
+
+    }
+})//绑定事件
+
